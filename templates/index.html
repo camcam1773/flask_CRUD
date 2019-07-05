@@ -6,7 +6,7 @@
 
 {% block body %}
     <div class="content">
-        <h1 style="text-align: center">Ferre Arşivi</h1>
+        <h1 style="text-align: center">Ferre Arşivi 305</h1>
         {% if tasks|length < 1 %}
             <h4 style="text-align: center">Henüz ferre eklenmemiş. Aşağıdan ekleyebilirsiniz.</h4>
         {% else %}
@@ -29,12 +29,15 @@
                 {% endfor %}
             </table>
         {% endif %}
-
+        <br>
         <div class="form">
             <form action="/" method="POST">
                 <input type="text" name="content" id="content">
                 <input type="submit" value="Add Task">
             </form>
         </div>
+        <br>
+        <br>
+        Baho'ya selam olsun!
     </div>
 {% endblock %}
