@@ -8,4 +8,5 @@ ADD update.html /templates
 
 RUN pip install -r requirements.txt
 
+expose 80
 CMD [ "python", "./app.py" ]
