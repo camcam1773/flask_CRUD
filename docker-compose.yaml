@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  flask:
+    build: .
+    environment:
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "8080:8080"
+    volumes:
+      - crud_sqllite:/crud
+volumes:
+  crud_sqllite:
