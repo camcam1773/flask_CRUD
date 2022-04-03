@@ -6,6 +6,7 @@ on:
       - 'Dockerfile'
       - 'docker-compose.yaml'
       - '.github/workflows/docker_test.yaml'
+      - 'wsgi.py'
   workflow_dispatch:
 
 jobs:
