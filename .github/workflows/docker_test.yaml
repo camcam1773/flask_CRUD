@@ -5,7 +5,7 @@ on:
     paths:
       - 'Dockerfile'
       - 'docker-compose.yaml'
-      - '.github/workflows/docker_test.yml'
+      - '.github/workflows/docker_test.yaml'
   workflow_dispatch:
 
 jobs:
