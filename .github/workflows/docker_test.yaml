@@ -6,7 +6,6 @@ on:
       - 'Dockerfile'
       - 'docker-compose.yaml'
       - '.github/workflows/docker_test.yml'
-
   workflow_dispatch:
 
 jobs:
