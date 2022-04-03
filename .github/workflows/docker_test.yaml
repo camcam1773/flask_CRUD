@@ -1,0 +1,26 @@
+name: Docker Compose test
+
+on:
+  push:
+    paths:
+      - 'Dockerfile'
+      - 'docker-compose.yaml'
+      - '.github/workflows/docker_test.yaml'
+      - 'wsgi.py'
+  workflow_dispatch:
+
+jobs:
+  docker_test:
+    runs-on: ubuntu-20.04
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        run: |
+          docker-compose up -d --build
+          sleep 30
+          curl http://127.0.0.1:8080
+          docker-compose logs
+          docker-compose down
