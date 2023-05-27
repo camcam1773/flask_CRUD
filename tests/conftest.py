@@ -13,7 +13,9 @@ def client():
     app.app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///{}".format(db_name)
     app.app.config['TESTING'] = True
 
-    app.db.create_all()
+    with app.app.app_context():
+        app.db.create_all()
     with app.app.test_client() as client:
         yield client
-    app.db.drop_all()
+    with app.app.app_context():
+        app.db.drop_all()
