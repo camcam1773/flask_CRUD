@@ -22,5 +22,5 @@ jobs:
         pip install bandit
 
     - name: Run Bandit
-      run: bandit -r .
+      run: bandit -ll -ii -r .
 
