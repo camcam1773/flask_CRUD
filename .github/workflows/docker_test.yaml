@@ -22,5 +22,6 @@ jobs:
           docker-compose up -d --build
           sleep 30
           curl http://127.0.0.1:8080
+          docker compose exec flask pytest tests
           docker-compose logs
           docker-compose down
