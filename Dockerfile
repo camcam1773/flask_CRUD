@@ -4,8 +4,10 @@ WORKDIR /crud
 ADD app.py .
 ADD wsgi.py .
 ADD requirements.txt .
-ADD ./templates ./templates/
+ADD ./templates templates/
+ADD ./tests tests/
 
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 expose 8080
