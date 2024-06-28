@@ -22,17 +22,9 @@ jobs:
           sleep 15
       - name: Fetch artifacts
         run: |
-          curl http://127.0.0.1:8080 -o index.html
-          cat index.html
-          docker-compose logs > compose-logs.txt
-          cat compose-logs.txt
+          curl http://127.0.0.1:8080
+          docker-compose logs
       - name: Run Tests
         run: |
           docker compose exec flask pytest tests
           docker-compose down
-      - uses: actions/upload-artifact@v4
-        with:
-          name: compose-artifacts
-          path: |
-            index.html
-            compose-logs.txt
