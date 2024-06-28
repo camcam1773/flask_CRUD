@@ -16,12 +16,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-
-      - name: Run a multi-line script
+      - name: Compose Build & Run
         run: |
           docker-compose up -d --build
-          sleep 30
+          sleep 15
+      - name: Fetch artifacts
+        run: |
           curl http://127.0.0.1:8080
-          docker compose exec flask pytest tests
           docker-compose logs
+      - name: Run Tests
+        run: |
+          docker compose exec flask pytest tests
           docker-compose down
