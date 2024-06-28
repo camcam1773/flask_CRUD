@@ -19,15 +19,16 @@ jobs:
       - name: Compose Build & Run
         run: |
           docker-compose up -d --build
-          sleep 30
-      - name: Run Tests
-        run: docker compose exec flask pytest tests
+          sleep 15
       - name: Fetch artifacts
         run: |
           curl http://127.0.0.1:8080 -o index.html
           cat index.html
           docker-compose logs > compose-logs.txt
           cat compose-logs.txt
+      - name: Run Tests
+        run: |
+          docker compose exec flask pytest tests
           docker-compose down
       - uses: actions/upload-artifact@v4
         with:
