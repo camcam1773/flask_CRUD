@@ -25,7 +25,9 @@ jobs:
       - name: Fetch artifacts
         run: |
           curl http://127.0.0.1:8080 -o index.html
+          cat index.html
           docker-compose logs > compose-logs.txt
+          cat compose-logs.txt
           docker-compose down
       - uses: actions/upload-artifact@v4
         with:
