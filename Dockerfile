@@ -1,5 +1,8 @@
 FROM python:3.10-alpine
 
+LABEL org.opencontainers.image.source=https://github.com/camcam1773/flask_CRUD
+LABEL org.opencontainers.image.description="Flask CRUD"
+
 WORKDIR /crud
 ADD app.py .
 ADD wsgi.py .
