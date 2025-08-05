@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from flask_wtf.csrf import CSRFProtect
+from os import urandom
 
 app = Flask(__name__)
+app.secret_key = urandom(32)
+csrf = CSRFProtect(app)
+csrf.init_app(app)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///test.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
