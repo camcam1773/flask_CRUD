@@ -12,10 +12,8 @@ on:
 jobs:
   docker_test:
     runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Compose Build & Run
         run: |
           docker compose up -d --build
