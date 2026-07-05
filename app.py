@@ -11,7 +11,7 @@ db = SQLAlchemy(app)
 class Todo(db.Model):
     id = db.Column(db.INTEGER, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    date_created = db.Column(db.DateTime, default=datetime.now(timezone.utc))
 
     def __repr__(self):
         return "<Task %r>" % self.id
