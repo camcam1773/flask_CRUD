@@ -1,31 +1,20 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: Flask Unit-test
 
 on:
-  push:
+  pull_request:
   workflow_dispatch:
-
+permissions:
+  contents: read
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu-24.04
     steps:
-    - uses: actions/checkout@v6
-    - uses: actions/cache@v5
+    - uses: actions/checkout@v7
+    - uses: actions/cache@v6
       with:
         path: |
           ~/.cache/pip
-          ${{runner.tool_cache}}/python
         key: ${{ runner.os }}-flask-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-flask-
-    - name: Set up Python 3.13
-      uses: actions/setup-python@v6
-      with:
-        python-version: "3.13"
     - name: Install dependencies
       run: |
         python --version
@@ -46,5 +35,4 @@ jobs:
       with:
         name: Pytest XML            # Name of the check run which will be created
         path: report.xml    # Path to test results
-        reporter: java-junit 
-
+        reporter: java-junit
